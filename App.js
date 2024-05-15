@@ -1,4 +1,4 @@
-import { ImageBackground, Text, View } from 'react-native';
+import { ImageBackground, View, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useEffect, useState } from 'react';
 import { s } from './App.style';
 import hotBackground from './assets/hot.png';
@@ -28,21 +28,27 @@ export default function App() {
 	}
 
 	return (
-		<ImageBackground source={currentBackground} style={s.container}>
-			<View style={s.workspace}>
-				<TemperatureDisplay value={getConvertedTemperature()} unit={OppositeUnit} />
+		<TouchableWithoutFeedback
+			onPress={() => {
+				Keyboard.dismiss();
+			}}
+		>
+			<ImageBackground source={currentBackground} style={s.container}>
+				<KeyboardAvoidingView behavior="padding" style={s.workspace}>
+					<TemperatureDisplay value={getConvertedTemperature()} unit={OppositeUnit} />
 
-				<InputTemps onChangeText={setInputValue} />
+					<InputTemps onChangeText={setInputValue} unit={currentUnit} />
 
-				<View>
-					<ButtonConvert
-						onPress={() => {
-							setCurrentUnit(OppositeUnit);
-						}}
-						unit={currentUnit}
-					/>
-				</View>
-			</View>
-		</ImageBackground>
+					<View>
+						<ButtonConvert
+							onPress={() => {
+								setCurrentUnit(OppositeUnit);
+							}}
+							unit={currentUnit}
+						/>
+					</View>
+				</KeyboardAvoidingView>
+			</ImageBackground>
+		</TouchableWithoutFeedback>
 	);
 }
