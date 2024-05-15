@@ -4,7 +4,7 @@ import { s } from './InputTemps.style';
 export function InputTemps({ onChangeText, unit }) {
 	return (
 		<View style={s.container}>
-			<TextInput style={s.input} placeholder="entrer une valeur" keyboardType="numeric" maxLength={4} onChangeText={onChangeText} />
+			<TextInput style={s.input} returnKeyType="done" placeholder="entrer une valeur" keyboardType="numeric" maxLength={4} onChangeText={onChangeText} />
 			<Text style={s.unit}>{unit}</Text>
 		</View>
 	);

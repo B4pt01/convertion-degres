@@ -1,4 +1,4 @@
-export const DEFAULT_TEMPERATURE = '0';
+export const DEFAULT_TEMPERATURE = 0;
 export const UNITS = {
 	celsius: '°C',
 	faranheit: '°F'
